@@ -1,35 +1,27 @@
 let trees = {
   purple: 10,
   red: 10,
+  green: 10,
 }
 
 trees['purple']
 
 function getSpin() {
-  const options = [1, 2, 3 , 4, -2, -2, 'b']
+  const options = [1, 2, 3 , 4, 'bird', 'dog', 'basket']
   const spin = Math.floor(Math.random() * 6)
   return options[spin]
 }
 
 function getNewTreeNum(treeNum, spin) {
 
-  if (spin === 'b') return 10
-
+  if (spin === 'bird' || spin === 'dog') spin = -2 
+  if (spin === 'basket') return 10
   if (treeNum - spin > 10) return 10
-
   if (treeNum - spin < 0 ) return treeNum
-  
 
   return treeNum - spin
 }
 
-// function playRound(trees) {
-//   for (color in trees) {
-//     trees[color] = getNewTreeNum(trees[color])
-//     if (trees[color] === 0) break
-//   }
-//   return trees
-// }
 
 function playGame() {
   let winner = '' 
